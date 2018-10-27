@@ -1,8 +1,11 @@
 import React from 'react';
-import Navbar from '../components/Navbar/Navbar.js';
+import Header from '../components/Header/Header.js';
+import { Wrapper } from './styles';
 
 export const HomePage = () => (
-  <Navbar />
+  <Wrapper>
+    <Header />
+  </Wrapper>
 );
 
 export default HomePage;

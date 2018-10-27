@@ -17,9 +17,11 @@ const jss = create({
 class App extends Component {
   render() {
     return (
-      <JssProvider jss={jss} generateClassName={generateClassName}>
-        <HomePage></HomePage>
-      </JssProvider>
+      <div className="App">
+        <JssProvider jss={jss} generateClassName={generateClassName}>
+          <HomePage></HomePage>
+        </JssProvider>
+      </div>
     );
   }
 }

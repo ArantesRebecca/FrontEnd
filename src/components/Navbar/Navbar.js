@@ -1,10 +1,12 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Nav } from './styles';
-import { Logo } from './styles';
+import { Nav, Logo, ButtonWrapper, Divider } from './styles';
+import Button from '../Button/Button';
+import SearchBar from '../SearchBar/SearchBar';
+import Dropdown from '../Dropdown/Dropdown';
+import { SCREEN_TYPES } from './../Header/Header'
 
 export default class Navbar extends PureComponent {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -25,19 +27,34 @@ export default class Navbar extends PureComponent {
   };
 
   render() {
-    const { hidden } = this.props;
+    const { hidden, screenType } = this.props;
+    const { open } = this.state;
+    console.log('hidden', hidden)
     return (
       <Nav>
-        <Logo src={require('../../assets/allpoints-white.jpeg')}></Logo>
+          <Logo src={require('../../assets/allpoints-white.jpeg')} />
+          { hidden ? <SearchBar></SearchBar> : null}
+          <Divider /> 
+          {
+
+          }
+          {
+            screenType !== SCREEN_TYPES.mobile &&
+              <ButtonWrapper>
+                <Button title={'faça sua reserva'}/>
+                <Button title={'troque seus pontos'}/>
+                <Button title={'Login'}/>
+              </ButtonWrapper>
+          }
+          
+          {/*TODO: Set dropdown for mobile version latter  */}
+        {/* <Dropdown isOpen={open} onClick={() => console.log('a')}></Dropdown> */}
       </Nav> 
     );
   }
 }
 
 Navbar.propTypes = {
-
-};
-
-Navbar.defaultProps = {
-
+  hidden: PropTypes.bool.isRequired,
+  screenType: PropTypes.string.isRequired
 };

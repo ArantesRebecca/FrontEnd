@@ -1,15 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-import { withStyles } from '@material-ui/core/styles';
+import { Logo } from './styles';
 
-class MenuListComposition extends React.Component {
+export default class MenuListComposition extends React.Component {
   // state = {
   //   open: false,
   // };
@@ -30,6 +29,7 @@ class MenuListComposition extends React.Component {
     const { isOpen } = this.props;
     return (
       <Fragment>
+        <Logo src={require('../../assets/allpoints-white.jpeg')}></Logo>
         <Popper open={isOpen} anchorEl={this.anchorEl} transition disablePortal>
           {({ TransitionProps, placement }) => (
             <Grow
@@ -57,5 +57,3 @@ class MenuListComposition extends React.Component {
 MenuListComposition.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
-export default withStyles(styles)(MenuListComposition);
