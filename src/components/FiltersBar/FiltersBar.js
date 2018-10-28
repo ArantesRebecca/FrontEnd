@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import Filter from '../Filter/Filter';
 import { Wrapper } from './styles';
 import Guests from '../Guests/Guests';
+import DatePicker from '../DatePicker/DatePicker';
 
 class FiltersBar extends Component {
 
   avaliableFilters = () => {
     return (
     <Wrapper>
-      <Filter title={'Datas'}><p>aaaa</p></Filter>
-      <Filter title={'Hóspedes'}><Guests/></Filter>
+      <Filter title={'Datas'}><DatePicker /></Filter>
+      <Filter title={'Hóspedes'}><Guests /></Filter>
       <Filter title={'Comodidades'}></Filter>
       <Filter title={'Preço'}></Filter>
       <Filter title={'Rating'}></Filter>

@@ -4,8 +4,11 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    min-width: 320px;
     align-items: center;
+
+    @media(min-width: 768px){
+        min-width: 320px;
+    }
 `;
 
 export const ButtonsWrapper = styled.div`
