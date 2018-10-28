@@ -17,7 +17,6 @@ export const Nav = styled.nav`
   }
 
   @media(min-width: 992px) {
-    padding: 8px 64px;
     height: 80px;
   }
 `;

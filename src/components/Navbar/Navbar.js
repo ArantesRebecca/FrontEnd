@@ -36,9 +36,6 @@ export default class Navbar extends PureComponent {
           { hidden ? <SearchBar></SearchBar> : null}
           <Divider /> 
           {
-
-          }
-          {
             screenType !== SCREEN_TYPES.mobile &&
               <ButtonWrapper>
                 <Button title={'faça sua reserva'}/>

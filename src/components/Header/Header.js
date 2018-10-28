@@ -1,6 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Navbar from '../Navbar/Navbar';
+import Hero from '../Hero/Hero';
+import { HeroWrapper, StyledHeader } from './styles';
 
 export const SCREEN_TYPES = {
   mobile: "mobile",
@@ -12,6 +14,10 @@ export default class Header extends PureComponent {
 
   constructor(props) {
     super(props)
+    this.mock = {
+      searchedPlace:'Amsterdã, Reino dos Países Baixos',
+      searchResult:'209'
+    }
     this.state = {
       hidden: false,
       screenType: SCREEN_TYPES.desktop
@@ -48,42 +54,41 @@ export default class Header extends PureComponent {
   }
 
   render() {
-    const {
-      hidden,
-      screenType
-    } = this.state
-
+    const { hidden, screenType } = this.state;
+    const { searchedPlace, searchResult } = this.mock;
     return (
-      <div>
+      <StyledHeader>
         {/* {hidden ?  */}
         {/* //Navbar */}
           <Navbar hidden={hidden}> </Navbar>
-          {/* // : */}
-          {/* // <Navbar> </Navbar> */}
-        {/* } */}
-        {/* Hero */}
-        <div style={{height: '300px', width: '100%', backgroundColor: '#47286E'}}> </div>
-        {hidden ? 
+        {/* <div style={{height: '300px', width: '100%', backgroundColor: '#47286E'}}> </div> */}
+        <HeroWrapper>
+        <Hero searchedPlace={searchedPlace} searchResult={searchResult} />
+        </HeroWrapper>
+        
+        {/* {hidden ? 
         //Filter
           <div style={{height: '50px', width: '100%', backgroundColor: 'white', position: "fixed", top: screenType == SCREEN_TYPES.desktop ? 80 : 60}}> </div>
           :
           <div style={{height: '50px', width: '100%', backgroundColor: 'white'}}> </div>
-        }
+        } */}
         <div style={{height: '300px', width: '100%', backgroundColor: 'black'}}> </div>
         <div style={{height: '300px', width: '100%', backgroundColor: 'gray'}}> </div>
         <div style={{height: '300px', width: '100%', backgroundColor: 'gray'}}> </div>
         <div style={{height: '300px', width: '100%', backgroundColor: 'gray'}}> </div>
         <div style={{height: '300px', width: '100%', backgroundColor: 'gray'}}> </div>
-      </div>
+      </StyledHeader>
       
     );
   }
 }
 
 Header.propTypes = {
-
+  searchedPlace: PropTypes.string,
+  searchResult: PropTypes.string
 };
 
 Header.defaultProps = {
-
+  searchedPlace: '',
+  searchResult: ''
 };

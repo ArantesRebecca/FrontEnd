@@ -8,7 +8,7 @@ export const StyledButton = styled.button`
   border-style: none;
   font-weight: 600;
   font-size: 16px;
-  font-family: oxigen, sans-serif;
+  font-family: oxygen, sans-serif;
   outline: none !important;
   cursor: pointer;
 
