@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    min-width: 250px;
 
     @media(min-width: 768px){
         min-width: 320px;

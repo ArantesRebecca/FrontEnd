@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import PopoverFooter from '../PopoverFooter/PopoverFooter';
 import { Wrapper } from './styles';
 
 //This is a material UI Component, in a real project this can be customized to match the company visual identity 
@@ -50,7 +49,6 @@ class DatePicker extends Component{
                         }}
                     />
                 </form>
-                <PopoverFooter />
             </Wrapper>
         );
     }

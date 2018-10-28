@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Wrapper, AddButton, Title, ButtonsWrapper } from "./styles";
-import PopoverFooter from '../PopoverFooter/PopoverFooter';
 
 export default class Guests extends Component {
 
@@ -30,7 +29,7 @@ export default class Guests extends Component {
     }
 
     render() {
-        const { adultCount, childrenCount } = this.state;
+        const { adultCount, childrenCount, value, onSave } = this.state;
         return (
             <div>
                 <Wrapper>
@@ -49,7 +48,6 @@ export default class Guests extends Component {
                         <AddButton onClick={() => this.IncrementCount('children')}> + </AddButton>
                     </ButtonsWrapper>
                 </Wrapper>
-                <PopoverFooter />
             </div>
         )
     }

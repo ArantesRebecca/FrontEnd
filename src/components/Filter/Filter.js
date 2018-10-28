@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Popover from '@material-ui/core/Popover';
 import { Chip } from './styles';
+import PopoverFooter from '../PopoverFooter/PopoverFooter';
 
 export default class Filter extends PureComponent {
   constructor(props) {
@@ -40,6 +41,7 @@ export default class Filter extends PureComponent {
           }}
         >
           {children}
+          <PopoverFooter onSave={() => this.setState({ open: false })} />
         </Popover>
       </div>
 

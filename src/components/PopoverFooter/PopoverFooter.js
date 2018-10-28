@@ -1,12 +1,12 @@
 import React from 'react';
 import { Wrapper, Title, Footer, Line } from "./styles";
 
-const PopoverFooter = () => (
+const PopoverFooter = ({ onSave }) => (
   <Footer>
     <Line />
     <Wrapper>
       <Title clean>Limpar</Title>
-      <Title>Aplicar</Title>
+      <Title onClick={onSave}>Aplicar</Title>
     </Wrapper>
   </Footer>
 );

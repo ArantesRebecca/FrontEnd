@@ -6,10 +6,6 @@ export const Wrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    @media(min-width: 768px) {
-      min-width: 320px;
-    }
 `;
 
 export const Footer = styled.div`
