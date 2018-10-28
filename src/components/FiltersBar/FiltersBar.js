@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Filter from '../Filter/Filter';
 import { Wrapper } from './styles';
+import Guests from '../Guests/Guests';
 
 class FiltersBar extends Component {
 
   avaliableFilters = () => {
     return (
     <Wrapper>
-      <Filter title={'Datas'}></Filter>
-      <Filter title={'Hóspedes'}></Filter>
+      <Filter title={'Datas'}><p>aaaa</p></Filter>
+      <Filter title={'Hóspedes'}><Guests/></Filter>
       <Filter title={'Comodidades'}></Filter>
       <Filter title={'Preço'}></Filter>
       <Filter title={'Rating'}></Filter>

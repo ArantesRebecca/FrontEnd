@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Popover from '@material-ui/core/Popover';
 import { Chip } from './styles';
 
 export default class Filter extends PureComponent {
@@ -7,18 +8,41 @@ export default class Filter extends PureComponent {
     super(props)
     this.state = {
       isSelected: false,
+      open: false,
+      anchorEl: null
     }
   }
 
-  toggleIsSelected = () => {this.setState({ isSelected: !this.state.isSelected })}
+  toggleIsSelected = (event) => {
+    this.setState({ isSelected: !this.state.isSelected, open: true, anchorEl: event.currentTarget })
+  }
 
   render() {
-    const { isSelected } = this.state;
-    const { title } = this.props;
-    console.log(title)
+    const { isSelected, open, anchorEl } = this.state;
+    const { title, children } = this.props;
     return (
-      <Chip label={title} variant="outlined" onClick={() => this.toggleIsSelected()} isSelected={isSelected}>
-      </Chip>
+      <div>
+        <Chip label={title} variant="outlined" onClick={this.toggleIsSelected} isSelected={isSelected} clickable={false}>
+
+        </Chip>
+        <Popover
+          id="simple-popper"
+          open={open}
+          anchorEl={anchorEl}
+          onClose={() => this.setState({ open: false })}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          {children}
+        </Popover>
+      </div>
+
     )
   }
 }
