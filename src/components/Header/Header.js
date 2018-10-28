@@ -1,9 +1,9 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Navbar from '../Navbar/Navbar';
 import Hero from '../Hero/Hero';
 import { HeroWrapper, StyledHeader } from './styles';
-import Filter from '../FiltersBar/Filter'
+import FiltersBar from '../FiltersBar/FiltersBar'
 
 export const SCREEN_TYPES = {
   mobile: "mobile",
@@ -32,7 +32,7 @@ export default class Header extends PureComponent {
     window.addEventListener('scroll', () => this.handleScroll())
     window.addEventListener('resize', () => this.updateWindowDimensions());
     if (this._filters) {
-      this.setState({filtersTopAnchor: this._filters.offsetTop - (this.screenType == SCREEN_TYPES.desktop ? 80 : 60)}) // Sets the position to fix the filter view at the navbar
+      this.setState({filtersTopAnchor: this._filters.offsetTop - (this.screenType === SCREEN_TYPES.desktop ? 80 : 60)}) // Sets the position to fix the filter view at the navbar
     }
   }
 
@@ -68,7 +68,7 @@ export default class Header extends PureComponent {
         <HeroWrapper>
         <Hero searchedPlace={searchedPlace} searchResult={searchResult} />
         </HeroWrapper>
-        <Filter reference={(ref) => this._filters = ref} fixed={hidden} position={this.screenType == SCREEN_TYPES.desktop ? 80 : 60}/>
+        <FiltersBar reference={(ref) => this._filters = ref} hidden={hidden} position={this.screenType === SCREEN_TYPES.desktop ? 80 : 60}/>
         <div style={{height: '2000px', width: '100%', backgroundColor: 'gray'}}> </div>
       </StyledHeader>
       

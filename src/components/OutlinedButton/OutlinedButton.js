@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { StyledButton } from './styles';
 
-const Button = ({ title }) => (
-  <div>
+const OutlinedButton = ({ title }) => (
+  <Fragment>
     <StyledButton> {title} </StyledButton>
-  </div>
+  </Fragment>
 );
 
-Button.propTypes = {
+OutlinedButton.propTypes = {
   title: PropTypes.string.isRequired
 }
 
-export default Button;
+export default OutlinedButton;

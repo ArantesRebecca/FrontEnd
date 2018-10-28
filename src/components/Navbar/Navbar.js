@@ -1,9 +1,9 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Nav, Logo, ButtonWrapper, Divider } from './styles';
 import Button from '../Button/Button';
 import SearchBar from '../SearchBar/SearchBar';
-import Dropdown from '../Dropdown/Dropdown';
+// import Dropdown from '../Dropdown/Dropdown';
 import { SCREEN_TYPES } from './../Header/Header'
 
 export default class Navbar extends PureComponent {
