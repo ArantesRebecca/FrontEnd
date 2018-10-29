@@ -2,9 +2,6 @@
 
 This is a React project for allpoints website with Web, Table and Mobile version.
 
-## Mobile
-  ![](ezgif.com-video-to-gif(3).gif)
-
 ## Getting Started
 
 For running the project on your local machine for development and testing purposes just follow the next steps:
@@ -29,6 +26,18 @@ This project can be improved and here goes some things that I would like to do i
 - Improve Header component performance
 
 Please suggest you own improvements! 
+
+## Project Preview
+These are the mobile, tablet and web versions of this project
+
+### Mobile
+  ![](mobile.gif)
+  
+### Mobile
+ ![](tablet.gif)
+ 
+### Web
+ ![](web.gif)
 
 ## Authors
 
