@@ -1,16 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Popover from '@material-ui/core/Popover';
-import { Chip } from './styles';
 import PopoverFooter from '../PopoverFooter/PopoverFooter';
+import { Chip } from './styles';
 
 export default class Filter extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
       isSelected: false,
+      icon: null,
       open: false,
-      anchorEl: null
+      anchorEl: null,
     }
   }
 
@@ -23,14 +24,12 @@ export default class Filter extends PureComponent {
     const { title, children } = this.props;
     return (
       <div>
-        <Chip label={title} variant="outlined" onClick={this.toggleIsSelected} isSelected={isSelected} clickable={false}>
-
-        </Chip>
+        <Chip label={title} variant="outlined" onClick={this.toggleIsSelected} isSelected={isSelected} clickable={false} />
         <Popover
           id="simple-popper"
           open={open}
           anchorEl={anchorEl}
-          onClose={() => this.setState({ open: false })}
+          onClose={() => this.setState({ open: false, isSelected: false })}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'right',
@@ -41,7 +40,7 @@ export default class Filter extends PureComponent {
           }}
         >
           {children}
-          <PopoverFooter onSave={() => this.setState({ open: false })} />
+          <PopoverFooter onSave={() => this.setState({ open: false, isSelected: false })} />
         </Popover>
       </div>
 

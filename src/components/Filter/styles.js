@@ -5,7 +5,7 @@ export const Chip = styled(MuiChip)`
   padding: 0 12px;
   margin-right: 8px;
   height: 24px;
-  background-color: ${props => props.isSelected ? '#47286E' : 'white'};
+  background-color: ${props => props.isSelected ? '#8A2BE2' : 'white'};
   font-size: 12px;
   color: ${props => props.isSelected ? 'white' : '#383838'};
 

@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     align-items: center;
     min-width: 250px;
 
-    @media(min-width: 768px){
+    @media(min-width: 992px) {
         min-width: 320px;
     }
 `;

@@ -20,4 +20,14 @@ export const Line = styled.div`
 export const Title = styled.h4`
     color: ${props => props.clean ? '#A9A9A9' : '#ADFF2F'};
     margin: 16px;
+    font-family: oxygen,sans-serif;
+    font-size: 14px;
+  
+    @media(min-width: 768px) {
+      font-size: 14px;
+    }
+  
+    @media(min-width: 992px) {
+      font-size: 16px;
+    }
 `;

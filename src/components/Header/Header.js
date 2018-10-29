@@ -1,9 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Navbar from '../Navbar/Navbar';
 import Hero from '../Hero/Hero';
 import { HeroWrapper, StyledHeader } from './styles';
 import FiltersBar from '../FiltersBar/FiltersBar'
+import ContentPlaceholder from '../ContentPlaceholder/ContentPlaceholder'
 
 export const SCREEN_TYPES = {
   mobile: "mobile",
@@ -16,23 +17,26 @@ export default class Header extends PureComponent {
   constructor(props) {
     super(props)
     this.mock = {
-      searchedPlace:'Amsterdã, Reino dos Países Baixos',
-      searchResult:'209'
+      searchedPlace: 'Amsterdã, Reino dos Países Baixos',
+      searchResult: '209'
     }
     this.state = {
       hidden: false,
-      filtersTopAnchor: 324
+      filtersTopAnchor: 324,
+      screenType: SCREEN_TYPES.desktop
     }
-
     this._filters = null
-    this.screenType = SCREEN_TYPES.desktop
+  }
+
+  componentWillMount() {
+    this.updateWindowDimensions()
   }
 
   componentDidMount() {
     window.addEventListener('scroll', () => this.handleScroll())
     window.addEventListener('resize', () => this.updateWindowDimensions());
     if (this._filters) {
-      this.setState({filtersTopAnchor: this._filters.offsetTop - (this.screenType === SCREEN_TYPES.desktop ? 80 : 60)}) // Sets the position to fix the filter view at the navbar
+      this.setState({ filtersTopAnchor: this._filters.offsetTop - (this.screenType === SCREEN_TYPES.desktop ? 80 : 60) }) // Sets the position to fix the filter view at the navbar
     }
   }
 
@@ -43,19 +47,20 @@ export default class Header extends PureComponent {
 
   handleScroll() {
     if (window.pageYOffset >= this.state.filtersTopAnchor && !this.state.hidden) {
-      this.setState({hidden: true})
+      this.setState({ hidden: true })
     } else if (this.state.hidden && window.pageYOffset < this.state.filtersTopAnchor) {
-      this.setState({hidden: false})
+      this.setState({ hidden: false })
     }
   }
 
   updateWindowDimensions() {
-    if (window.innerWidth <= 768) {
-      this.screenType = SCREEN_TYPES.mobile
-    } else if (window.innerWidth <= 992) {
-      this.screenType = SCREEN_TYPES.tablet
+    console.log(window.innerWidth)
+    if (window.innerWidth < 768) {
+      this.setState({ screenType: SCREEN_TYPES.mobile })
+    } else if (window.innerWidth < 992) {
+      this.setState({screenType: SCREEN_TYPES.tablet})
     } else {
-      this.screenType = SCREEN_TYPES.desktop
+      this.setState({screenType: SCREEN_TYPES.desktop})
     }
   }
 
@@ -63,25 +68,29 @@ export default class Header extends PureComponent {
     const { hidden, screenType } = this.state;
     const { searchedPlace, searchResult } = this.mock;
     return (
-      <StyledHeader>
-          <Navbar hidden={hidden}> </Navbar>
+      <Fragment>
+        <Navbar hidden={hidden} screenType={screenType} />
         <HeroWrapper>
-        <Hero searchedPlace={searchedPlace} searchResult={searchResult} />
+          <Hero searchedPlace={searchedPlace} searchResult={searchResult} />
         </HeroWrapper>
-        <FiltersBar reference={(ref) => this._filters = ref} hidden={hidden} position={this.screenType === SCREEN_TYPES.desktop ? 80 : 60}/>
-        <div style={{height: '2000px', width: '100%', backgroundColor: 'gray'}}> </div>
-      </StyledHeader>
-      
+        <FiltersBar reference={(ref) => this._filters = ref} hidden={hidden} position={screenType === SCREEN_TYPES.desktop ? 80 : 60} />
+
+        {/* Content Placeholder set for ilustrate content in page */}
+        <ContentPlaceholder />
+      </Fragment>
     );
   }
 }
 
 Header.propTypes = {
+  hidden: PropTypes.bool.isRequired,
+  screenType: PropTypes.string,
   searchedPlace: PropTypes.string,
   searchResult: PropTypes.string
 };
 
 Header.defaultProps = {
+  screenType: SCREEN_TYPES.desktop,
   searchedPlace: '',
   searchResult: ''
 };

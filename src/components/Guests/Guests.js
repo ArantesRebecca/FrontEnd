@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Wrapper, AddButton, Title, ButtonsWrapper } from "./styles";
+import { Wrapper, AddButton, Title, ButtonsWrapper } from './styles';
 
 export default class Guests extends Component {
 
@@ -13,23 +13,23 @@ export default class Guests extends Component {
     }
 
     IncrementCount = (count) => {
-        if (count === 'children'){
+        if (count === 'children') {
             this.setState({ childrenCount: this.state.childrenCount + 1 })
         } else if (count === 'adult') {
-            this.setState({ adultCount: this.state.adultCount + 1})
+            this.setState({ adultCount: this.state.adultCount + 1 })
         }
     }
 
     DecreaseCount = (count) => {
-        if (count === 'children'){
-            this.setState({ childrenCount: this.state.childrenCount != 0 ? this.state.childrenCount - 1 :  0 })
+        if (count === 'children') {
+            this.setState({ childrenCount: this.state.childrenCount != 0 ? this.state.childrenCount - 1 : 0 })
         } else if (count === 'adult') {
             this.setState({ adultCount: this.state.adultCount != 0 ? this.state.adultCount - 1 : 0 })
         }
     }
 
     render() {
-        const { adultCount, childrenCount, value, onSave } = this.state;
+        const { adultCount, childrenCount } = this.state;
         return (
             <div>
                 <Wrapper>

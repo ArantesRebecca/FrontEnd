@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import Rating from 'react-rating'
+import ReactRating from 'react-rating'
 import { Wrapper } from './styles'
 
-class RatingInfo extends Component {
+class Rating extends Component {
 
   render() {
     const { value, onChange } = this.props
     return (
       <Fragment>
         <Wrapper>
-          <Rating
+          <ReactRating
             initialRating={value}
             onChange={(value) => onChange(value)}
           />
@@ -19,4 +19,4 @@ class RatingInfo extends Component {
   }
 }
 
-export default (RatingInfo)
+export default (Rating)
